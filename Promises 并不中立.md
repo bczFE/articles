@@ -2,11 +2,11 @@
 
 译自[PROMISES ARE NOT NEUTRAL ENOUGH](https://staltz.com/promises-are-not-neutral-enough.html)，作者[André Staltz](https://staltz.com/)。
 
-`Promise` 的问题影响了整个 JS 生态系统。本文会讨论其中的一些问题。
+`Promise` 的问题影响了整个 JS 生态系统。本文会讨论其中的一些问题。
 
 看完开头你可能觉得我是在对着电脑咆哮数小时之后特发此文来喷 `Promise` 的，但你错了。其实是今早我刚泡完咖啡，[有人在推特上问](https://twitter.com/tomasz_ducin/status/963671852693499904)我如何看待 `Promise`，然后我一边喝咖啡一边回复，后来有人提议可以总结出来，才整理成此文。
 
-`Promise` 的初衷是为了表示一个**终将得到的**值，可能在下一个事件循环，也可能在下一分钟。也有很多**原语 primitives**可以实现同样的目的：回调、C# 的 Tasks、Scala 的 Futures、RxJS 的 Observable 等等。JS 里的 `Promise` 就是使用**终值 eventual values**实现的一种**原语 primitives**。
+`Promise` 的初衷是为了表示一个**终将得到的**值，可能在下一个事件循环，也可能在下一分钟。也有很多**原语 primitives**可以实现同样的目的：回调、C# 的 Tasks、Scala 的 Futures、RxJS 的 Observable 等等。JS 里的 `Promise` 就是使用**终值 eventual values**实现的一种**原语 primitives**。
 
 尽管达到了目的，但 `JS Promise` 仍是一种武断的**原语 primitives**，引入了很多古怪的东西。这种古怪已经散布到了 JS 语言和生态系统的其他角落。简单来说，`Promise` 不够中立是因为以下四点：
 
@@ -28,7 +28,7 @@ const promise = new Promise(function fn(resolve, reject) {
 console.log('after');
 ```
 
-在控制台可以看到顺序输出了 `before`、`hello`、`after`。传给 `Promise` 的初始化函数会立即执行。如果在调用之外定义执行函数，你能看的更清楚：
+在控制台可以看到顺序输出了 `before`、`hello`、`after`。传给 `Promise` 的初始化函数会立即执行。如果在调用之外定义执行函数，你能看的更清楚：
 
 ```js
 function fn(resolve, reject) {
@@ -95,7 +95,7 @@ const getUserAge = betterFetch('https://my.api.lol/user/295712')
 ```js
 var promiseA = someAsyncFn();
 var promiseB = promiseA.then(/* ... */);
-```
+```
 
 
 如果我们调用 `promiseB.cancel()`，我们是不是也要取消 `promiseA` 呢？在上面的例子中可能说得通，但是下面的例子呢？
@@ -183,4 +183,4 @@ Promise.resolve(42).then(x => Promise.resolve(x / 10));
 这儿有两个例子，如果当时用数学思维设计 `Promise` 将会是怎样：[fun-task](https://github.com/rpominov/fun-task) 和 [avenir](https://github.com/yelouafi/avenir)。这俩都是懒惰的，所以有些相似。不同点（可能？）在于命名和方法的可用性上。但是这俩都比 `Promise` 要中立的多，因为他们都：（1）是懒惰的、（2）允许同步的、（3）可以取消的。其中 `fun-task` 还分离了 `map` 和 `flatMap`。
 
 `Promise` 是被发明的，不是被发现的。最好的**原语 primitives**是被发现的，因为它们通常是中性的，我们不能反驳它们。例如圆这样一个简单的数学概念，这就是为什么人们发现圆而不是发明圆。你的意见一般不能与某个圆“相悖”，因为它没有自带任何意见，而且它常常发生在自然界和系统中。
-
+
