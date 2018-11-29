@@ -10,3 +10,4 @@
 - [true facts](https://github.com/bczFE/articles/issues/5)
 - [分界变色效果](https://github.com/bczFE/articles/issues/6)
 - [从 v-语法 到 jsx：给 vue 用户的 react 小例子](https://github.com/bczFE/articles/issues/7)
+- [全宽的上方阴影](https://github.com/bczFE/articles/issues/8)
