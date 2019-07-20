@@ -19,3 +19,4 @@
 
 ### mist
 - [true facts](https://github.com/bczFE/articles/issues/5)
+- [React - Unable to preventDefault inside passive event listener](https://github.com/bczFE/articles/issues/11)
