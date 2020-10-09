@@ -11,6 +11,7 @@
 - [css 文字环绕效果](https://github.com/bczFE/articles/issues/9)
 - [图片模糊动画效果](https://github.com/bczFE/articles/issues/10)
 - [css 画阴阳太极图](https://github.com/bczFE/articles/issues/12)
+- [文本渐变跟随滚动变化](https://github.com/bczFE/articles/issues/13)
 
 ### 文章
 - [Promise 并不中立](https://github.com/bczFE/articles/issues/1)
